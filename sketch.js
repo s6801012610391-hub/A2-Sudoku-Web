@@ -1,3 +1,7 @@
+let clicked_rows = -1  //empty rows 
+let clicked_cols = -1 //empty cols
+let cell_size = 67 //size of cell
+
 function draw_table() {
     let i = 0;
     while (i<8) {
