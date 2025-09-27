@@ -9,7 +9,7 @@ function draw_table() {
         if (i==2 || i==5) {
             strokeWeight(2);
         }
-        line(67+67*i,0,67+67*i,height);
+        line(cell_size+cell_size*i,0,cell_size+cell_size*i,height);
         i += 1;
     }
 
@@ -19,7 +19,7 @@ function draw_table() {
         if (j==2 || j ==5) {
             strokeWeight(2);
         }
-        line(0,67+67*j,width,67+67*j);
+        line(0,cell_size+cell_size*j,width,cell_size+cell_size*j);
         j += 1;
     }
 }
