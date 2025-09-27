@@ -40,4 +40,22 @@ function setup() {
 function draw() {
     background(200);
     draw_table();
+
+    let i = 0;
+    while (i < 9) {
+        let j = 0;
+        while (j < 9) {
+            let x = j * cell_size;
+            let y = i * cell_size;
+            if (i == clicked_rows && j == clicked_cols) {
+                fill(0, 200, 0);
+                rect(x, y, cell_size, cell_size);
+            }
+            else {
+                fill(0);
+            }
+            j += 1;
+        }
+        i += 1;
+    }
 }
