@@ -24,6 +24,15 @@ function draw_table() {
     }
 }
 
+function mousePressed() {
+    let rows = Math.floor(mouseY/ cell_size);
+    let cols = Math.floor(mouseX/ cell_size);
+    if (rows >= 0 && rows < 9 && cols >= 0 && cols < 9) {
+        clicked_rows = rows;
+        clicked_cols = cols;
+    }
+}
+
 function setup() {
     createCanvas(600, 600);
 }
