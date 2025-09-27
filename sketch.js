@@ -25,5 +25,6 @@ function setup() {
 }
 
 function draw() {
+    background(200);
     draw_table();
 }
