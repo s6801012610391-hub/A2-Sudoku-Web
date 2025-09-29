@@ -1,6 +1,22 @@
 let clicked_rows = -1  //empty rows 
 let clicked_cols = -1 //empty cols
 let cell_size = 67 //size of cell
+let table = []; // table for numbers
+
+function loadSudoku(filename) {
+  table = [];
+  let nums = loadStrings(filename, function(lines) {
+    for (let line of lines) {
+      let row = [];
+      for (let n of line) {
+        row.push(int(n));
+      }
+      table.push(row);
+    }
+    console.log(table);
+  });
+}
+
 
 function draw_table() {
     let i = 0;
@@ -35,6 +51,7 @@ function mousePressed() {
 
 function setup() {
     createCanvas(600, 600);
+    loadSudoku("sudoku.txt")
 }
 
 function draw() {
