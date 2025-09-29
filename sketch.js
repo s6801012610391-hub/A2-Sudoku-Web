@@ -63,6 +63,16 @@ function mousePressed() {
     }
 }
 
+function keyPressed() {
+    if (clicked_rows != -1 && clicked_cols != -1) {
+        if (table[clicked_rows][clicked_cols] == 0) {
+            if (key >= '1' && key <= '9') {
+                table[clicked_rows][clicked_cols] = int(key);
+            }
+        }
+    }
+}
+
 function setup() {
     createCanvas(600, 600);
     loadSudoku("sudoku.txt");
