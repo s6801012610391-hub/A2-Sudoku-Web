@@ -65,7 +65,9 @@ function mousePressed() {
 
 function setup() {
     createCanvas(600, 600);
-    loadSudoku("sudoku.txt")
+    loadSudoku("sudoku.txt");
+    textAlign(CENTER, CENTER);
+    textSize(20);
 }
 
 function draw() {
