@@ -17,6 +17,20 @@ function loadSudoku(filename) {
   });
 }
 
+function draw_num() {
+    let i = 0;
+    while (i < 9) {
+        let j = 0;
+        while (j < 9) {
+            if (table[i][j] != 0) {
+                text(table[i][j], cell_size * j + cell_size / 2, cell_size * i + cell_size / 2);
+            }
+            j += 1;
+        }
+        i += 1;
+    }
+}
+
 
 function draw_table() {
     let i = 0;
@@ -57,6 +71,7 @@ function setup() {
 function draw() {
     background(200);
     draw_table();
+    draw_num();
 
     let i = 0;
     while (i < 9) {
