@@ -24,6 +24,7 @@ function loadSudoku(lines) {
 }
 
 function draw_num() {
+    fill(0);
     let i = 0;
     while (i < 9) {
         let j = 0;
