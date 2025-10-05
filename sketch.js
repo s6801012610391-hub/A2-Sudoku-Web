@@ -75,9 +75,9 @@ function keyPressed() {
 
 function setup() {
     createCanvas(600, 600);
-    loadSudoku("sudoku.txt");
     textAlign(CENTER, CENTER);
     textSize(20);
+    loadStrings('sudoku.txt', loadSudoku);
 }
 
 function draw() {
