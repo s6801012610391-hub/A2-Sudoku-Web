@@ -103,10 +103,14 @@ function mousePressed() {
 }
 
 function keyPressed() {
-    if (clicked_rows != -1 && clicked_cols != -1) {
-        if (table[clicked_rows][clicked_cols] == 0) {
-            if (key >= '1' && key <= '9') {
-                table[clicked_rows][clicked_cols] = int(key);
+    if (clicked_rows != -1 && clicked_cols != -1) { // check if cell_size is unclicked
+        if (truth_value[clicked_rows][clicked_cols] != 2) { // if number is not fixed number
+            if (key >= '1' && key <= '9') { // if keyboard between 1 to 9
+                table[clicked_rows][clicked_cols] = int(key); // number in table = int(key)
+            }
+            else if (key == BACKSPACE) { // if key is BACKSPACE
+                table[clicked_rows][clicked_cols] = 0; // delete number
+                truth_value[clicked_rows][clicked_cols] = 1; // number is input number
             }
         }
     }
