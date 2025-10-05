@@ -4,6 +4,10 @@ let cell_size = 67 //size of cell
 let table = []; // table for numbers
 let lines = [];
 
+function preload() {
+  lines = loadStrings('sudoku.txt');
+}
+
 function loadSudoku(lines) {
     table = [];
     let i = 0;
