@@ -3,6 +3,17 @@ let clicked_cols = -1 //empty cols
 let cell_size = 67 //size of cell
 let table = []; // table for numbers
 let lines = [];
+let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1]
+];
 
 function preload() {
   lines = loadStrings('sudoku.txt');
