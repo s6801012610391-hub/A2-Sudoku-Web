@@ -21,16 +21,26 @@ function preload() {
 
 function loadSudoku(lines) {
     table = [];
-    let i = 0;
-    while (i < lines.length) {
+    let r = 0;
+    while (r < lines.length) {
         let row = [];
-        let j = 0;
-        while (j < lines[i].length) {
-            row.push(parseInt(lines[i][j]));
-            j++;
+        let c = 0;
+        while (c < lines[r].length) {
+            row.push(parseInt(lines[r][c]));
+            c += 1;
         }
         table.push(row);
-        i++;
+        r += 1;
+    }
+
+    let i = 0;
+    while (i < 9) {
+        let j = 0;
+        while (j <9) {
+            if (table[i][j] != 0) {
+                truth_value[i][j] = 2;
+            } 
+        }
     }
 }
 
