@@ -53,6 +53,15 @@ function draw_num() {
         let j = 0;
         while (j < 9) {
             if (table[i][j] != 0) {
+                if (truth_value[i][j] == 2) {
+                    fill(0); // fixed number = black
+                }
+                else if (truth_value[i][j] == 1) {
+                    fill(0, 0, 200); // input number = blue
+                }
+                else if (truth_value[i][j] == 0) {
+                    fill(200, 0, 0); // wrong number = red
+                }
                 text(table[i][j], cell_size * j + cell_size / 2, cell_size * i + cell_size / 2);
             }
             j += 1;
