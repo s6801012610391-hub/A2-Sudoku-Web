@@ -107,12 +107,48 @@ function keyPressed() {
         if (truth_value[clicked_rows][clicked_cols] != 2) { // if number is not fixed number
             if (key >= '1' && key <= '9') { // if keyboard between 1 to 9
                 table[clicked_rows][clicked_cols] = int(key); // number in table = int(key)
+                checkNum()
             }
             else if (key == BACKSPACE) { // if key is BACKSPACE
                 table[clicked_rows][clicked_cols] = 0; // delete number
                 truth_value[clicked_rows][clicked_cols] = 1; // number is input number
             }
         }
+    }
+}
+
+function checkNum(){
+    let i = 0;
+    while (i < 9) {
+        if (table[clicked_rows][clicked_cols] == table[i][clicked_cols] && i != clicked_rows) {
+            truth_value[clicked_rows][clicked_cols] = 0;
+        }
+        i += 1;
+    }
+
+    let j = 0;
+    while (j < 0) {
+        if (table[clicked_rows][clicked_cols] == table[clicked_rows][j] && j != clicked_cols) {
+            truth_value[clicked_rows][clicked_cols] = 0;
+        }
+    }
+
+    // subgrids
+    let s_rows = Math.floor(clicked_rows / 3) * 3;
+    let s_cols = Math.floor(clicked_cols / 3) * 3;
+
+    let ibox = 0;
+    while (ibox < 3) {
+        let jbox = 0;
+        while (jbox < 3) {
+            let r = s_rows + ibox;
+            let c = s_cols + jbox;
+            if ((r != clicked_rows || c != clicked_cols) && table[r][c] == table[clicked_rows][clicked_cols]) {
+                truth_value[clicked_rows][clicked_cols] = 0;
+            }
+            jbox += 1;
+        }
+        ibox += 1;
     }
 }
 
