@@ -2,19 +2,21 @@ let clicked_rows = -1  //empty rows
 let clicked_cols = -1 //empty cols
 let cell_size = 67 //size of cell
 let table = []; // table for numbers
+let lines = [];
 
-function loadSudoku(filename) {
-  table = [];
-  let nums = loadStrings(filename, function(lines) {
-    for (let line of lines) {
-      let row = [];
-      for (let n of line) {
-        row.push(int(n));
-      }
-      table.push(row);
+function loadSudoku(lines) {
+    table = [];
+    let i = 0;
+    while (i < lines.length) {
+        let row = [];
+        let j = 0;
+        while (j < lines[i].length) {
+            row.push(parseInt(lines[i][j]));
+            j++;
+        }
+        table.push(row);
+        i++;
     }
-    console.log(table);
-  });
 }
 
 function draw_num() {
