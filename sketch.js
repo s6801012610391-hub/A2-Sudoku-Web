@@ -39,8 +39,10 @@ function loadSudoku(lines) {
         while (j <9) {
             if (table[i][j] != 0) {
                 truth_value[i][j] = 2;
-            } 
+            }
+            j += 1;
         }
+        i += 1;
     }
 }
 
