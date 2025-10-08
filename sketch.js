@@ -127,10 +127,11 @@ function checkNum(){
     }
 
     let j = 0;
-    while (j < 0) {
+    while (j < 9) {
         if (table[clicked_rows][clicked_cols] == table[clicked_rows][j] && j != clicked_cols) {
             truth_value[clicked_rows][clicked_cols] = 0;
         }
+        j += 1;
     }
 
     // subgrids
