@@ -7,6 +7,7 @@ let cell_size = (s / 9) // size of cell
 let table = []; // table for numbers
 let lines = [];
 let formatError = false; // is format error?
+let indexError = false; // is index error?
 let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
     [1,1,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1],
@@ -22,6 +23,7 @@ let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
 function loadSudoku(filename) {
     if (filename.endsWith('.txt')) {
         formatError = false;
+        indexError = false;
         loadStrings(filename, function(data) {
             table = [];
             let r = 0;
@@ -29,6 +31,11 @@ function loadSudoku(filename) {
                 let row = [];
                 let c = 0;
                 while (c < data[r].length) {
+                    let n = data[r][c];
+                    if (!"0123456789".includes(n)) { // if not number
+                        indexError = true;
+                        break;
+                    }
                     row.push(parseInt(data[r][c]));
                     c += 1;
                 }
@@ -178,6 +185,13 @@ function draw() {
         fill(200, 0, 0);
         textSize(32);
         text("Format Error", width/2, height/2);
+        return;
+    }
+
+    if (indexError) {
+        fill(255, 0, 0);
+        textSize(32);
+        text("Index Error", width/2, height/2);
         return;
     }
 
