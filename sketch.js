@@ -18,35 +18,36 @@ let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
     [1,1,1,1,1,1,1,1,1]
 ];
 
-function preload() {
-  lines = loadStrings('sudoku.txt');
-}
-
-function loadSudoku(lines) {
-    table = [];
-    let r = 0;
-    while (r < lines.length) {
-        let row = [];
-        let c = 0;
-        while (c < lines[r].length) {
-            row.push(parseInt(lines[r][c]));
-            c += 1;
-        }
-        table.push(row);
-        r += 1;
-    }
-
-    let i = 0;
-    while (i < 9) {
-        let j = 0;
-        while (j <9) {
-            if (table[i][j] != 0) {
-                truth_value[i][j] = 2;
+function loadSudoku(filename) {
+    loadStrings(filename, function(data) {
+        table = [];
+        let r = 0;
+        while (r < data.length) {
+            let row = [];
+            let c = 0;
+            while (c < data[r].length) {
+                row.push(parseInt(data[r][c]));
+                c += 1;
             }
-            j += 1;
+            table.push(row);
+            r += 1;
         }
-        i += 1;
-    }
+
+        let i = 0;
+        while (i < 9) {
+            let j = 0;
+            while (j <9) {
+                if (table[i][j] != 0) {
+                    truth_value[i][j] = 2;
+                }
+                else {
+                    truth_value[i][j] = 1;
+                }
+                j += 1;
+            }
+            i += 1;
+        }
+    });
 }
 
 function draw_num() {
@@ -160,7 +161,7 @@ function setup() {
     createCanvas(width, height);
     textAlign(CENTER, CENTER);
     textSize(20);
-    loadStrings('sudoku.txt', loadSudoku);
+    loadSudoku('sudoku.txt');
 }
 
 function draw() {
