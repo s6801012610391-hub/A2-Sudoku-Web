@@ -6,6 +6,7 @@ let clicked_cols = -1 // empty cols
 let cell_size = (s / 9) // size of cell
 let table = []; // table for numbers
 let lines = [];
+let formatError = false; // is format error?
 let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
     [1,1,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1],
@@ -19,35 +20,41 @@ let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
 ];
 
 function loadSudoku(filename) {
-    loadStrings(filename, function(data) {
-        table = [];
-        let r = 0;
-        while (r < data.length) {
-            let row = [];
-            let c = 0;
-            while (c < data[r].length) {
-                row.push(parseInt(data[r][c]));
-                c += 1;
+    if (filename.endsWith('.txt')) {
+        formatError = false;
+        loadStrings(filename, function(data) {
+            table = [];
+            let r = 0;
+            while (r < data.length) {
+                let row = [];
+                let c = 0;
+                while (c < data[r].length) {
+                    row.push(parseInt(data[r][c]));
+                    c += 1;
+                }
+                table.push(row);
+                r += 1;
             }
-            table.push(row);
-            r += 1;
-        }
 
-        let i = 0;
-        while (i < 9) {
-            let j = 0;
-            while (j <9) {
-                if (table[i][j] != 0) {
-                    truth_value[i][j] = 2;
+            let i = 0;
+            while (i < 9) {
+                let j = 0;
+                while (j <9) {
+                    if (table[i][j] != 0) {
+                        truth_value[i][j] = 2;
+                    }
+                    else {
+                        truth_value[i][j] = 1;
+                    }
+                    j += 1;
                 }
-                else {
-                    truth_value[i][j] = 1;
-                }
-                j += 1;
+                i += 1;
             }
-            i += 1;
-        }
-    });
+        });
+    }
+    else {
+        formatError = true;
+    }
 }
 
 function draw_num() {
@@ -166,6 +173,14 @@ function setup() {
 
 function draw() {
     background(200);
+
+    if (formatError == true) {
+        fill(200, 0, 0);
+        textSize(32);
+        text("Format Error", width/2, height/2);
+        return;
+    }
+
     draw_table();
     draw_num();
 
