@@ -171,6 +171,14 @@ function checkNum(){
     }
 }
 
+function endgame() {
+    background(200);
+    fill(0);
+    textAlign(CENTER);
+    textSize(32);
+    text("End!",width/2,height/2);
+}
+
 function setup() {
     createCanvas(width, height);
     textAlign(CENTER, CENTER);
@@ -201,5 +209,28 @@ function draw() {
     if (clicked_rows != -1 && clicked_cols != -1) {
         fill(0, 200, 0, 100);
         rect(clicked_cols * cell_size, clicked_rows * cell_size, cell_size, cell_size);
+    }
+
+    let count = 0; // count for input number
+    let fixed_count = 0; // count for fixed number
+    let i = 0;
+    while (i < 9) {
+        let j = 0;
+        while (j < 9) {
+            if (table[i][j] != 0 && truth_value[i][j] == 1) { // if number is not 0 and it is input number
+                count += 1; 
+            }
+            if (truth_value[i][j] == 2) { // if number is fixed
+                fixed_count += 1;
+            }
+            j += 1;
+        }
+        i += 1;
+    }
+
+    let total = count + fixed_count;
+    if (total == 81) {
+        endgame();
+        noLoop();
     }
 }
