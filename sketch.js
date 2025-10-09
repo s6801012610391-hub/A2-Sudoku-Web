@@ -5,7 +5,6 @@ let clicked_rows = -1  // empty rows
 let clicked_cols = -1 // empty cols
 let cell_size = (s / 9) // size of cell
 let table = []; // table for numbers
-let lines = [];
 let formatError = false; // is format error?
 let indexError = false; // is index error?
 let truth_value = [ // 0 = wrong number, 1 = input number, 2 = fixed number
